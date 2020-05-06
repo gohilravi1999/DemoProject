@@ -26,6 +26,6 @@ export class SignupFormComponent implements OnInit {
   }
 
   gotoUserList() {
-    this.router.navigate(['login']);
+    this.router.navigate(['/loginForm']);
   }
 }
