@@ -3,8 +3,5 @@ export class UserInformation {
     firstName:string;
     lastName:string;
     email:string;
-    address:string;
-    pincode:number;
     password:string;
-    gender:string;
 }
