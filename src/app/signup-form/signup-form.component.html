@@ -1,7 +1,8 @@
 <div class="card bg-light text-dark"
-  style="width:600px;">
+  style="width:600px;
+  margin-left:260px;">
   <div class="card-body">
-    <h4 align="center">Registration Form</h4>
+    <h4 style="text-align: center;">Registration Form</h4>
     <hr>
   <form (ngSubmit)="onSubmit()" #userForm="ngForm">
     <div class="form-group">
@@ -11,8 +12,13 @@
         id="firstName"
         name="firstName"
         placeholder="Enter your first name"
-        required #firstName="ngModel">
-        <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Please enter valid first name</span>
+        pattern="^[a-zA-Z]{2,}$"
+        required
+        #firstName="ngModel">
+        <span class="help-block" *ngIf="firstName.errors?.required && firstName.touched">
+          FirstName is required</span>
+        <span class="help-block" *ngIf="firstName.errors?.pattern && firstName.touched">
+          FirstName should have only alphabet with minimum 2 character</span>
     </div>
   
     <div class="form-group">
@@ -22,8 +28,13 @@
           id="lastName"
           name="lastName"
           placeholder="Enter your last name"
-          required #lastName="ngModel">
-          <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Please enter valid last name</span>
+          pattern="^[a-zA-Z]{2,}$"
+          required
+          #lastName="ngModel">
+          <span class="help-block" *ngIf="lastName.errors?.required && lastName.touched">
+            LastName is required</span>
+          <span class="help-block" *ngIf="lastName.errors?.pattern && lastName.touched">
+            LastName should have only alphabet with minimum 2 character</span>
       </div>
 
     <div class="form-group">
@@ -33,8 +44,13 @@
         id="email"
         name="email"
         placeholder="Enter your email address"
-        required #email="ngModel">
-        <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email address</span>
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        required
+        #email="ngModel">
+        <span class="help-block" *ngIf="email.errors?.required && email.touched">
+          Email is required</span>
+        <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+          Email is not valid</span>
     </div>
 
     <div class="form-group">
@@ -44,8 +60,13 @@
           id="password"
           name="password"
           placeholder="Enter your password"
-          required #password="ngModel">
-          <span class="help-block" *ngIf="!password.valid && password.touched">Please enter valid password</span>
+          pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@]).*$"
+          required
+          #password="ngModel">
+          <span class="help-block" *ngIf="password.errors?.required && password.touched">
+            Password is required</span>
+          <span class="help-block" *ngIf="password.errors?.pattern && password.touched">
+            Password should have at least 8 character with lowercase and Uppercase alphabet,digit and special character Ex. Abc@123</span>
     </div>
 
     <button type="submit" [disabled]="!userForm.form.valid" 

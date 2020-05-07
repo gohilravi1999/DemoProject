@@ -23,9 +23,11 @@ export class SignupFormComponent implements OnInit {
 
   onSubmit() {
     this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    this.gotoUserList();
+    alert("Registration Successful");
   }
 
   gotoUserList() {
-    this.router.navigate(['/loginForm']);
+    this.router.navigate(['/login']);
   }
 }
