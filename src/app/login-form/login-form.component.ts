@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  username : string;
+  password : string;
+
+  constructor(private userService: UserService,
+                private router : Router) { }
 
   ngOnInit(): void {
+    
   }
 
+  doLogin(){
+  let response =  this.userService.login(this.username,this.password);
+    response.subscribe(result=>{
+      this.gotoUserHomePage()
+    })
+  }
+  gotoUserHomePage(){
+    this.router.navigate(['/userHome']);
+  }
 }
