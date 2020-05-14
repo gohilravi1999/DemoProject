@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentication-service.service';
+import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,23 +10,39 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  username : string;
-  password : string;
+  form : any ={}
+  isLoggedIn = false;
+  isLoginFailed = false;
+  roles: string[] = [];
 
-  constructor(private userService: UserService,
-                private router : Router) { }
+  constructor(private authenticationService: AuthenticationService,
+     private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
-  doLogin(){
-  let response =  this.userService.login(this.username,this.password);
-    response.subscribe(result=>{
-      this.gotoUserHomePage()
-    })
+  onSubmit() {
+    this.authenticationService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      err => {
+        this.isLoginFailed = true;
+      }
+    );
   }
-  gotoUserHomePage(){
-    this.router.navigate(['/userHome']);
+
+  reloadPage() {
+    window.location.reload();
   }
 }

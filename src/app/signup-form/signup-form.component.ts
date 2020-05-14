@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInformation } from '../model/user-information';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentication-service.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -10,24 +8,28 @@ import { UserService } from '../services/user.service';
 })
 export class SignupFormComponent implements OnInit {
 
-  user : UserInformation;
+  form : any = { };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private route: ActivatedRoute, 
-    private router: Router, 
-    private userService: UserService) { 
-      this.user = new UserInformation();
+  constructor(private authenticationService : AuthenticationService) { 
+     
     }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => this.gotoUserList());
-    this.gotoUserList();
-    alert("Registration Successful");
-  }
-
-  gotoUserList() {
-    this.router.navigate(['/login']);
+    this.authenticationService.register(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.isSignUpFailed = true;
+      }
+    );
   }
 }

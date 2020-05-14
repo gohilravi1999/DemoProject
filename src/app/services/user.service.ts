@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { UserInformation } from '../model/user-information';
+import { Observable } from 'rxjs';
 
-@Injectable()
+const API_URL = 'http://localhost:8080/api/application/';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
 
-  private signupUrl: string;
- 
-  constructor(private http: HttpClient) {
-    this.signupUrl = 'http://localhost:8080/signup';
+  constructor(private http: HttpClient) { }
+
+  getPublicContent(): Observable<any> {
+    return this.http.get(API_URL + 'public', { responseType: 'text' });
   }
 
-  public save(userInformation: UserInformation) {
-    return this.http.post<UserInformation>(this.signupUrl, userInformation);
+  getUserHomepage(): Observable<any> {
+    return this.http.get(API_URL + 'user', { responseType: 'text' });
   }
 
-  public login(username:string,password:string){
-    const headers=new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password)});
-    return this.http.get("http://localhost:8080/authenticate",{headers,responseType:'text' as 'json'});
+  getAdminHomepage(): Observable<any> {
+    return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
 }
