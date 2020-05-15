@@ -3,11 +3,11 @@ import { NormalUserServicesService } from 'src/app/services/normal-user-services
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
-  selector: 'app-edit-profile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.css']
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css']
 })
-export class EditProfileComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
 
   form : any = { };
   isSuccessful = false;
@@ -15,25 +15,26 @@ export class EditProfileComponent implements OnInit {
   isFailed = false;
   currentUser : any ;
   id : any;
+  password : any;
   constructor(private normalUserService : NormalUserServicesService,
-                private tokenStorageService : TokenStorageService) { }
+    private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
     this.id = this.tokenStorageService.getUser().id;
-    this.currentUser = this.tokenStorageService.getUser();
+    this.password = this.tokenStorageService.getUser().password;
   }
 
-  onEditProfile(){
-   
-    this.normalUserService.updateProfile(this.id,this.form).subscribe(
-      response => {
+  onChangePassword(){
+      this.normalUserService.changePassword(this.id,this.form).subscribe(
+        response => {
         console.log(response);
         this.isSuccessful=true;
         this.isFailed=false;
-      },
-      error => {
-        console.log(error);
-        this.isFailed=true;
-      });
+        },
+        error => {
+          console.log(error);
+          this.isFailed=true;
+        }
+      );
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -9,10 +10,13 @@ import { UserService } from '../services/user.service';
 export class AdminHomepageComponent implements OnInit {
 
   content: string;
+  currentUser : any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+                private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorageService.getUser();
     this.userService.getAdminHomepage().subscribe(
       data => {
         this.content = data;

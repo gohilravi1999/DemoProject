@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-user-homepage',
@@ -8,10 +9,13 @@ import { UserService } from '../services/user.service';
 })
 export class UserHomepageComponent implements OnInit {
   content='';
+  currentUser : any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+                private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorageService.getUser();
     this.userService.getUserHomepage().subscribe(
       data => {
         this.content = data;

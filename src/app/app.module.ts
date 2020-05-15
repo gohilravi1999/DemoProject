@@ -13,6 +13,8 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { authInterceptorProviders } from './helper/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
     UserHomepageComponent,
     AdminHomepageComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

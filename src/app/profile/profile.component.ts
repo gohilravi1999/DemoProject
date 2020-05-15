@@ -22,4 +22,8 @@ export class ProfileComponent implements OnInit {
   onEdit(){
     this.router.navigate(['editProfile'],{relativeTo : this.route});
   }
+
+  onChangePassword(){
+    this.router.navigate(['changePassword'],{relativeTo : this.route});
+  }
 }

@@ -1,1 +1,8 @@
-<p>user-homepage works!</p>
+<div class="row" *ngIf="currentUser; else loggedOut">
+    <div class="col-sm-4">
+        {{content}}
+    </div>
+</div>
+<ng-template #loggedOut>
+    Please login.
+</ng-template>
