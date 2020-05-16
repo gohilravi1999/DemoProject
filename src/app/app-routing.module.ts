@@ -8,6 +8,7 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-list.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'publicHomepage', component: PublicHomepageComponent},
   { path: 'userHomepage', component: UserHomepageComponent },
-  { path: 'adminHomepage', component: AdminHomepageComponent },
+  { path: 'adminHomepage', component: AdminHomepageComponent , children:[
+    { path: 'getUser', component: GetUserListComponent }]
+  },
   { path: '', redirectTo: 'publicHomepage', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent , children:[
     { path: 'editProfile', component: EditProfileComponent },

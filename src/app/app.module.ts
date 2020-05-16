@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { authInterceptorProviders } from './helper/auth.interceptor';
+import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { authInterceptorProviders } from './helper/auth.interceptor';
     AdminHomepageComponent,
     ProfileComponent,
     EditProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    GetUserListComponent
   ],
   imports: [
     BrowserModule,
