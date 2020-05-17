@@ -1,5 +1,6 @@
 <div class="list row">
     <div class="col-sm-4">
+      <br>
         <h4 style="color:rgb(62, 65, 214);;">Active Users List</h4>
         <hr>
         <ul class="list-group">
@@ -12,7 +13,6 @@
             {{ user.username }}
           </li>
         </ul>
-        <hr>
       <h4 style="color:rgb(62, 65, 214);;">Inactive Users List</h4>
       <hr>
       <ul class="list-group">
@@ -26,8 +26,9 @@
         </li>
       </ul>
     </div>
-
+   
     <div class="col-md-6">
+      <br>
         <h4 style="color:rgb(62, 65, 214);">User Detail</h4>
         <hr>
         <div *ngIf="currentUser">
@@ -59,7 +60,7 @@
             {{ currentInactiveUser.email}}
           </div>
           <button 
-          class="btn btn-success" (click)="makeActive(); refreshList()">Active</button>
+          class="btn btn-success" (click)="makeActive(); refreshList()">Make Active</button>
         </div>
     
         <div *ngIf="!currentUser && ! currentInactiveUser">

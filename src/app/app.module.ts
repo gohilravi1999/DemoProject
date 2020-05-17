@@ -16,6 +16,8 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { authInterceptorProviders } from './helper/auth.interceptor';
 import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-list.component';
+import { GetProductListComponent } from './admin-homepage/get-product-list/get-product-list.component';
+import { AddProductComponent } from './admin-homepage/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-li
     ProfileComponent,
     EditProfileComponent,
     ChangePasswordComponent,
-    GetUserListComponent
+    GetUserListComponent,
+    GetProductListComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
