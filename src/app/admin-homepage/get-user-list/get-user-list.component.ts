@@ -11,7 +11,7 @@ import { error } from '@angular/compiler/src/util';
 export class GetUserListComponent implements OnInit {
 
   activeUsers: any;
-  InactiveUsers : any;
+  inactiveUsers : any;
   inActiveUser : any;
   currentUser = null;
   currentInactiveUser = null;
@@ -42,7 +42,7 @@ export class GetUserListComponent implements OnInit {
     this.adminService.listOfInActiveUser()
       .subscribe(
         data => {
-          this.InactiveUsers = data;
+          this.inactiveUsers = data;
           console.log(data);
         },
         error => {
@@ -50,25 +50,8 @@ export class GetUserListComponent implements OnInit {
         });
   }
 
-  refreshList() {
-    window.location.reload();
-    this.getListOfActiveUser();
-    this.getListOfInActiveUser();
-    this.currentUser = null;
-    this.currentIndex = -1;
-  }
-
-  setActiveUser(user, index) {
-    this.currentUser = user;
-    this.currentIndex = index;
-  }
-  setInActiveUser(user, index) {
-    this.currentInactiveUser = user;
-    this.currentIndex = index;
-  }
-
-  makeInactive(){
-    this.adminService.makeInactive(this.currentUser)
+  makeInactive(user : any){
+    this.adminService.makeInactive(user)
     .subscribe(
       response=>{
         console.log(response);
@@ -79,8 +62,8 @@ export class GetUserListComponent implements OnInit {
     );
   }
 
-  makeActive(){
-    this.adminService.makeActive(this.currentInactiveUser)
+  makeActive(user : any){
+    this.adminService.makeActive(user)
     .subscribe(
       response=>{
         console.log(response);

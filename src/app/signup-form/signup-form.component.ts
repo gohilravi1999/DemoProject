@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -9,11 +10,11 @@ import { AuthenticationService } from '../services/authentication-service.servic
 export class SignupFormComponent implements OnInit {
 
   form : any = { };
-  isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authenticationService : AuthenticationService) { 
+  constructor(private authenticationService : AuthenticationService,
+                private router : Router) { 
      
     }
 
@@ -24,11 +25,13 @@ export class SignupFormComponent implements OnInit {
     this.authenticationService.register(this.form).subscribe(
       data => {
         console.log(data);
-        this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['../login']);
+        window.alert("Sign up Successfull");
       },
       err => {
         this.isSignUpFailed = true;
+        this.errorMessage = err.error.message;
       }
     );
   }

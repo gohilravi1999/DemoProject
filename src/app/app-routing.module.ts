@@ -18,16 +18,15 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'publicHomepage', component: PublicHomepageComponent},
   { path: 'userHomepage', component: UserHomepageComponent },
-  { path: 'adminHomepage', component: AdminHomepageComponent , children:[
-    { path: 'getUser', component: GetUserListComponent },
-    { path: 'getProduct', component: GetProductListComponent} ,
-    { path: 'addProduct', component: AddProductComponent }]
-  },
+  { path: 'adminHomepage', component: AdminHomepageComponent},
   { path: '', redirectTo: 'publicHomepage', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent , children:[
     { path: 'editProfile', component: EditProfileComponent },
     { path: 'changePassword', component: ChangePasswordComponent }] 
-  }
+  },
+  { path: 'getUser', component: GetUserListComponent },
+  { path: 'getProduct', component: GetProductListComponent},
+  { path: 'addProduct', component: AddProductComponent }
 ];
 
 @NgModule({

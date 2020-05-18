@@ -9,7 +9,7 @@
           Login successfull.
         </div>
         <div class="alert alert-warning" *ngIf="isLoginFailed">
-          Login failed!<br />
+          {{errorMessage}}<br />
         </div>
 
         <form name="form"

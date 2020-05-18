@@ -12,6 +12,7 @@ export class LoginFormComponent implements OnInit {
   form : any ={}
   isLoggedIn = false;
   isLoginFailed = false;
+  errorMessage = '';
   roles: string[] = [];
 
   constructor(private authenticationService: AuthenticationService,
@@ -37,6 +38,8 @@ export class LoginFormComponent implements OnInit {
       },
       err => {
         this.isLoginFailed = true;
+        this.errorMessage = err.error.message;
+        console.log(err);
       }
     );
   }

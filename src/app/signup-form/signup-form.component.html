@@ -5,12 +5,8 @@
     <h4 style="text-align: center;">Registration Form</h4>
     <hr>
 
-    <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
-    </div>
-
     <div class="alert alert-warning" *ngIf="isSignUpFailed">
-      Signup failed!<br />
+      {{errorMessage}}<br />
     </div>
 
     <form

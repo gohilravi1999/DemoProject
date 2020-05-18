@@ -4,7 +4,13 @@
       <a class="nav-link" routerLink="/publicHomepage">Home </a>
     </li>
     <li class="nav-item" *ngIf="hasAdminRole">
-      <a class="nav-link" routerLink="/adminHomepage">Admin Board</a>
+      <a class="nav-link" routerLink="/getUser">User List</a>
+    </li>
+    <li class="nav-item" *ngIf="hasAdminRole">
+      <a class="nav-link" routerLink="/getProduct">Product List</a>
+    </li>
+    <li class="nav-item" *ngIf="hasAdminRole">
+      <a class="nav-link" routerLink="/addProduct">Add New Product</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"  *ngIf="hasUserRole" routerLink="/userHomepage">User</a>

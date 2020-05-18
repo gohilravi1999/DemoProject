@@ -1,70 +1,81 @@
-<div class="list row">
-    <div class="col-sm-4">
-      <br>
-        <h4 style="color:rgb(62, 65, 214);;">Active Users List</h4>
-        <hr>
-        <ul class="list-group">
-          <li
-            class="list-group-item"
-            *ngFor="let user of activeUsers; let i = index"
-            [class.active]="i == currentIndex"
-            (click)="setActiveUser(user, i)"
-          >
-            {{ user.username }}
-          </li>
-        </ul>
-      <h4 style="color:rgb(62, 65, 214);;">Inactive Users List</h4>
-      <hr>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let user of InactiveUsers; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setInActiveUser(user, i)"
-        >
-          {{ user.username }}
-        </li>
-      </ul>
+<br>
+<h4 style="color: navy;margin-left:260px;">Active User List :</h4>
+<div class="list row"
+  style="margin-left:260px;">
+  <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of activeUsers; let i = index"
+              [class.active]="i == currentIndex">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
-   
-    <div class="col-md-6">
-      <br>
-        <h4 style="color:rgb(62, 65, 214);">User Detail</h4>
-        <hr>
-        <div *ngIf="currentUser">
-          <div>
-            <label><strong>Id:</strong></label> {{ currentUser.id }}
-          </div>
-          <div>
-            <label><strong>Username:</strong></label>
-            {{ currentUser.username }}
-          </div>
-          <div>
-            <label><strong>Email:</strong></label>
-            {{ currentUser.email}}
-          </div>
-          <button 
-          class="btn btn-danger" (click)="makeInactive(); refreshList()">Make Inactive</button>
-        </div>
-
-        <div *ngIf="currentInactiveUser">
-          <div>
-            <label><strong>Id:</strong></label> {{ currentInactiveUser.id }}
-          </div>
-          <div>
-            <label><strong>Username:</strong></label>
-            {{ currentInactiveUser.username }}
-          </div>
-          <div>
-            <label><strong>Email:</strong></label>
-            {{ currentInactiveUser.email}}
-          </div>
-          <button 
-          class="btn btn-success" (click)="makeActive(); refreshList()">Make Active</button>
-        </div>
-    
-        <div *ngIf="!currentUser && ! currentInactiveUser">
-          <p>Please Select Username</p>
-        </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of activeUsers; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="makeInactive(user)">
+                  <td><a href="/getUser">Inactive</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<h4 style="color: navy;margin-left:260px;">Inactive User List :</h4>
+<div class="list row"
+      style="margin-left:260px;">
+    <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of inactiveUsers; let i = index"
+              [class.active]="i == currentIndex">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of inactiveUsers; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="makeActive(user)">
+                  <td><a href="/getUser">Active</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
