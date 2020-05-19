@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-product-list',
@@ -16,8 +17,11 @@ export class GetProductListComponent implements OnInit {
   currentProduct = null;
   currentInactiveProduct = null;
   currentIndex = -1;
+  errorMessage='';
+  editedProduct:any;
 
-  constructor(private adminService : AdminServiceService) { }
+  constructor(private adminService : AdminServiceService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.getListOfActiveProduct();
@@ -49,25 +53,8 @@ export class GetProductListComponent implements OnInit {
         });
   }
 
-  refreshList() {
-    window.location.reload();
-    this.getListOfActiveProduct();
-    this.getListOfInActiveProduct();
-    this.currentProduct = null;
-    this.currentIndex = -1;
-  }
-
-  setActiveProduct(product, index) {
-    this.currentProduct = product;
-    this.currentIndex = index;
-  }
-  setInActiveProduct(product, index) {
-    this.currentInactiveProduct = product;
-    this.currentIndex = index;
-  }
-
-  makeInactiveProduct(){
-    this.adminService.makeInactiveProduct(this.currentProduct)
+  makeInactiveProduct(product:any){
+    this.adminService.makeInactiveProduct(product)
     .subscribe(
       response=>{
         console.log(response);
@@ -78,8 +65,8 @@ export class GetProductListComponent implements OnInit {
     );
   }
 
-  makeActiveProduct(){
-    this.adminService.makeActiveProduct(this.currentInactiveProduct)
+  makeActiveProduct(product:any){
+    this.adminService.makeActiveProduct(product)
     .subscribe(
       response=>{
         console.log(response);
@@ -90,29 +77,35 @@ export class GetProductListComponent implements OnInit {
     );
   }
 
-  onEditInactive(){
-    this.adminService.editProduct(this.currentInactiveProduct.id,this.form)
+  onEditActive(id){
+    console.log(id);
+      this.adminService.getProduct(id).subscribe(
+        data => {
+          this.editedProduct = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  onEditProduct(){
+    console.log(this.form);
+     this.adminService.editProduct(this.editedProduct.id,this.editedProduct)
     .subscribe(
       response=>{
-        console.log(response);
+        window.alert("Product successfully Edited!!")
         window.location.reload();
       },
-      error=>{
-        console.log(error);
-      }
-    );
+      err=>{
+        this.isFailed=true;
+        this.errorMessage = err.error.message;
+        console.log(err);
+      });
   }
 
-  onEditActive(){
-    this.adminService.editProduct(this.currentProduct.id,this.form)
-    .subscribe(
-      response=>{
-        console.log(response);
-        window.location.reload();
-      },
-      error=>{
-        console.log(error);
-      }
-    );
+  onCancel(){
+    this.editedProduct=null;
   }
 }

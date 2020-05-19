@@ -8,6 +8,7 @@ const MAKE_ACTIVE = "makeActive"
 const MAKE_INACTIVE_PRODUCT = "makeInactiveProduct"
 const MAKE_ACTIVE_PRODUCT = "makeActiveProduct"
 const EDIT_PRODUCT = "editProduct"
+const GET_PRODUCT = "getProduct"
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,9 @@ export class AdminServiceService {
 
   editProduct(id,data){
     return this.http.put(`${API_URL}${EDIT_PRODUCT}/${id}`,data);
+  }
+
+  getProduct(id){
+    return this.http.get(`${API_URL}${GET_PRODUCT}/${id}`);
   }
 }

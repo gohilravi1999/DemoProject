@@ -1,17 +1,13 @@
 <div class="row">
     <div class="col-sm-7">
-        <div class="card bg-light text-dark"
-        style="width:600px;">
+        <div *ngIf="isActiveForm;" class="card bg-light text-dark"
+        style="width:600px;margin-left: 250px;">
         <div class="card-body">
           <h4 style="text-align: center;">Add Product</h4>
           <hr>
       
-          <div class="alert alert-success" *ngIf="isSuccessful">
-           Product added Successfully!
-          </div>
-      
           <div class="alert alert-warning" *ngIf="isFailed">
-            failed..Product is already added!<br />
+            {{errorMessage}}<br />
           </div>
       
           <form
@@ -57,21 +53,26 @@
                 *ngIf="imagePath.touched">
              <div class="form-group">
                 <label for="description">Description</label>
-                <textarea
+                <input
                   type="imagePath"
                   class="form-control"
                   name="description"
                   [(ngModel)]="form.description"
                   placeholder="Enter description"
+                  maxlength="25"
                   required
                   #description="ngModel"
                 >
-                </textarea>
                 <span class="help-block" *ngIf="description.errors?.required && description.touched">
                 description is required</span>
+                <span class="help-block" *ngIf="description.errors?.maxlength && description.touched">
+                  description size must less than 25</span>
               </div>
             <button class="btn btn-success">
               Save</button>
+
+              <button (click)="onCancel()" class="btn btn-danger">
+                Cancel</button>
           </form>
         </div>
      </div>

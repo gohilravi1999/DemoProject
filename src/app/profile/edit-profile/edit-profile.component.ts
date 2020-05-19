@@ -24,7 +24,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   onEditProfile(){
-   
+    
     this.normalUserService.updateProfile(this.id,this.form).subscribe(
       response => {
         console.log(response);

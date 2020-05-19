@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -25,8 +25,9 @@ const routes: Routes = [
     { path: 'changePassword', component: ChangePasswordComponent }] 
   },
   { path: 'getUser', component: GetUserListComponent },
-  { path: 'getProduct', component: GetProductListComponent},
-  { path: 'addProduct', component: AddProductComponent }
+  { path: 'getProduct', component: GetProductListComponent , children:[
+    { path: 'addProduct', component: AddProductComponent}
+  ]}
 ];
 
 @NgModule({

@@ -12,7 +12,6 @@ export class ChangePasswordComponent implements OnInit {
   form : any = { };
   isSuccessful = false;
   isLoggedIn =false;
-  isFailed = false;
   currentUser : any ;
   id : any;
   password : any;
@@ -29,11 +28,9 @@ export class ChangePasswordComponent implements OnInit {
         response => {
         console.log(response);
         this.isSuccessful=true;
-        this.isFailed=false;
         },
         error => {
           console.log(error);
-          this.isFailed=true;
         }
       );
   }
