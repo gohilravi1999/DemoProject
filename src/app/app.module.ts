@@ -18,6 +18,13 @@ import { authInterceptorProviders } from './helper/auth.interceptor';
 import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-list.component';
 import { GetProductListComponent } from './admin-homepage/get-product-list/get-product-list.component';
 import { AddProductComponent } from './admin-homepage/add-product/add-product.component';
+import { OrderComponent } from './order/order.component';
+import { UserOrderComponent } from './user-order/user-order.component';
+import { PendingOrderComponent } from './user-order/pending-order/pending-order.component';
+import { ApprovedOrderComponent } from './user-order/approved-order/approved-order.component';
+import { RejectedOrderComponent } from './user-order/rejected-order/rejected-order.component';
+import { CanceledOrderComponent } from './user-order/canceled-order/canceled-order.component';
+import { OrderListComponent } from './admin-homepage/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,14 @@ import { AddProductComponent } from './admin-homepage/add-product/add-product.co
     ChangePasswordComponent,
     GetUserListComponent,
     GetProductListComponent,
-    AddProductComponent
+    AddProductComponent,
+    OrderComponent,
+    UserOrderComponent,
+    PendingOrderComponent,
+    ApprovedOrderComponent,
+    RejectedOrderComponent,
+    CanceledOrderComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

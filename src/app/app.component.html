@@ -9,8 +9,17 @@
     <li class="nav-item" *ngIf="hasAdminRole">
       <a class="nav-link" routerLink="/getProduct">Products</a>
     </li>
+    <li class="nav-item" *ngIf="hasAdminRole">
+      <a class="nav-link" routerLink="/adminOrder">Orders</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link"  *ngIf="hasUserRole" routerLink="/userHomepage">User</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  *ngIf="hasUserRole" routerLink="/order">Products</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  *ngIf="hasUserRole" routerLink="/getUserOrder">Orders</a>
     </li>
   </ul>
 

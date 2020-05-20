@@ -27,6 +27,13 @@ export class AppComponent {
 
       this.hasUserRole = this.roles.includes('ROLE_USER');
       this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
+
+      if(this.hasAdminRole){
+        this.router.navigate(['getUser']);
+      }
+      if(this.hasUserRole){
+        this.router.navigate(['order']);
+      }
       this.username = user.username;
     }
   }

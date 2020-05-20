@@ -1,0 +1,164 @@
+<br>
+<div class="list row">
+    <h4 style="color: blue;">Active Product List :</h4>
+</div>
+  <div class="row">
+    <div class="col-sm-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of activeProducts; let i = index"
+          [class.active]="i == currentIndex">
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td><img
+              [src]="product.imagePath"
+              alt="{{ product.name }}"
+              class="img-responsive"
+              style="max-height: 20px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-0">
+      <table class="table">
+          <thead>
+              <tr>
+                <th>Order</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let product of activeProducts; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="setActiveProduct(product)">
+                <td><a (click)="setActiveProduct(product.id)"
+                    style="color: blue;">Order now</a></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+    <div *ngIf = "orderedProduct;" class="col-sm-6">
+        <div class="card bg-light text-dark"
+        style="margin-left: 20px;">
+
+        <div class="card-body">
+            <h4 style="text-align: center;">Order {{orderedProduct.name}}</h4>
+            <hr>
+            <div class="alert alert-success" *ngIf="!isFailed">
+                Ordered Successfull<br />
+              </div>
+            <form
+              name="form"
+              (ngSubmit)="orderForm.form.valid && onOrder()"
+              #orderForm="ngForm"
+              novalidate
+            >
+              <div class="form-group">
+                <label for="address">Product Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="product"
+                  [(ngModel)]="form.name"
+                  placeholder="Enter Product name for verification"
+                  minlength="3"
+                  required
+                  #productName="ngModel"
+                >
+                <span class="help-block" *ngIf="productName.errors?.required && productName.touched">
+                    Product Name is required</span>
+                <span class="help-block" *ngIf="productName.errors?.minlength && productName.touched">
+                 Minimum size must be 3</span>
+              </div>
+        
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  [(ngModel)]="form.address"
+                  placeholder="Enter your address"
+                  minlength="8"
+                  required
+                  #address="ngModel"
+                >
+                <span class="help-block" *ngIf="address.errors?.required && address.touched">
+                  Address is required</span>
+                <span class="help-block" *ngIf="address.errors?.minlength && address.touched">
+                  Minimum size must be 8</span>
+              </div>
+        
+              <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="pincode"
+                  [(ngModel)]="form.pincode"
+                  pattern="^[0-9]{0,}$"
+                  minlength="6"
+                  maxlength="8"
+                  placeholder="Enter your pincode"
+                  required
+                  #pincode="ngModel"
+                >
+                <span class="help-block" *ngIf="pincode.errors?.required && pincode.touched">
+                  Pincode is required</span>
+                <span class="help-block" *ngIf="pincode.errors?.pattern && pincode.touched">
+                  Pincode must have only number</span>
+                  <span class="help-block" *ngIf="pincode.errors?.minlength && pincode.touched">
+                    Pincode size must be more than 6.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="mobile"
+                  [(ngModel)]="form.mobileNumber"
+                  pattern="^[0-9]{0,}$"
+                  maxlength="10"
+                  placeholder="Enter your Mobile number"
+                  required
+                  #mobile="ngModel"
+                >
+                <span class="help-block" *ngIf="mobile.errors?.required && mobile.touched">
+                  Mobile Number is required</span>
+                <span class="help-block" *ngIf="mobile.errors?.pattern && mobile.touched">
+                  Mobile must have only number.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="pincode">No. Of Item</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="numberOfItem"
+                  [(ngModel)]="form.numberOfItem"
+                  pattern="^[0-9]{0,}$"
+                  maxlength="4"
+                  placeholder="Enter your number of item"
+                  required
+                  #noOfItem="ngModel"
+                >
+                <span class="help-block" *ngIf="noOfItem.errors?.required && noOfItem.touched">
+                  No of Item field is required</span>
+                <span class="help-block" *ngIf="noOfItem.errors?.pattern && noOfItem.touched">
+                  No of Item must have only number.</span>
+              </div>
+
+              <button class="btn btn-success">
+                Order Now</button>
+            </form>
+          </div>
+        
+    </div>
+</div>

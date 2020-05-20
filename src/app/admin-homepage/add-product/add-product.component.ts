@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -14,7 +14,8 @@ export class AddProductComponent implements OnInit {
   errorMessage = '';
   isActiveForm = true;
 
-  constructor(private adminService : AdminServiceService) { }
+  constructor(private adminService : AdminServiceService,
+                private router : Router) { }
 
   ngOnInit(){
   }
@@ -36,5 +37,6 @@ export class AddProductComponent implements OnInit {
   }
   onCancel(){
     this.isActiveForm=false;
+    this.router.navigate(['/getProduct']);
   }
 }

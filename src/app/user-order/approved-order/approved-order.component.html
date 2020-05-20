@@ -1,0 +1,29 @@
+<div class="list row">
+    <h4 style="color: blue;">Approved order List :</h4>
+</div>
+<br>
+  <div class="row">
+    <div class="col-sm-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ProductName</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Mobile No.</th>
+            <th>No.of Item</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of approvedOrder; let i = index"
+          [class.active]="i == currentIndex">
+            <td>{{order.name}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.pincode}}</td>
+            <td>{{order.mobileNumber}}</td>
+            <td>{{order.numberOfItem}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

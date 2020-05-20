@@ -11,6 +11,13 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
 import { GetUserListComponent } from './admin-homepage/get-user-list/get-user-list.component';
 import { GetProductListComponent } from './admin-homepage/get-product-list/get-product-list.component';
 import { AddProductComponent } from './admin-homepage/add-product/add-product.component';
+import { OrderComponent } from './order/order.component';
+import { UserOrderComponent } from './user-order/user-order.component';
+import { PendingOrderComponent } from './user-order/pending-order/pending-order.component';
+import { ApprovedOrderComponent } from './user-order/approved-order/approved-order.component';
+import { RejectedOrderComponent } from './user-order/rejected-order/rejected-order.component';
+import { CanceledOrderComponent } from './user-order/canceled-order/canceled-order.component';
+import { OrderListComponent } from './admin-homepage/order-list/order-list.component';
 
 
 const routes: Routes = [
@@ -27,6 +34,14 @@ const routes: Routes = [
   { path: 'getUser', component: GetUserListComponent },
   { path: 'getProduct', component: GetProductListComponent , children:[
     { path: 'addProduct', component: AddProductComponent}
+  ]},
+  { path: 'order', component: OrderComponent },
+  { path: 'adminOrder', component: OrderListComponent },
+  { path: 'getUserOrder', component: UserOrderComponent , children:[
+    { path: 'pendingOrder', component: PendingOrderComponent},
+    { path: 'approvedOrder', component: ApprovedOrderComponent},
+    { path: 'rejectedOrder', component: RejectedOrderComponent},
+    { path: 'canceledOrder', component: CanceledOrderComponent}
   ]}
 ];
 
