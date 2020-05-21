@@ -19,7 +19,7 @@ export class OrderListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPendingOrder();
     this.getAllApprovedOrders();
-    this.getAllRejectedOrders
+    this.getAllRejectedOrders();
   }
 
   getAllPendingOrder(){
@@ -47,7 +47,7 @@ export class OrderListComponent implements OnInit {
   }
 
   getAllRejectedOrders(){
-    this.orderService.getAllRejected().subscribe(
+    this.orderService.getAllReject().subscribe(
       data => {
         this.rejectedOrder = data;
         console.log(data);

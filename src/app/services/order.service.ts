@@ -76,7 +76,7 @@ export class OrderService {
     return this.http.get(`${API_URL}${ALL_APPROVED}`);
   }
 
-  getAllRejected(){
+  getAllReject(){
     return this.http.get(`${API_URL}${ALL_REJECTED}`);
   }
 
