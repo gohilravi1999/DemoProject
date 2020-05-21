@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { PublicHomepageComponent } from './public-homepage/public-homepage.component';
-import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
@@ -32,7 +31,6 @@ import { OrderListComponent } from './admin-homepage/order-list/order-list.compo
     SignupFormComponent,
     LoginFormComponent,
     PublicHomepageComponent,
-    UserHomepageComponent,
     AdminHomepageComponent,
     ProfileComponent,
     EditProfileComponent,

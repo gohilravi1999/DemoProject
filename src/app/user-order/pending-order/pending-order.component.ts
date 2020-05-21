@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pending-order',
@@ -17,7 +18,8 @@ export class PendingOrderComponent implements OnInit {
   cancelOrder : any;
 
   constructor(private tokenStorageService : TokenStorageService,
-    private  orderService : OrderService) { }
+    private  orderService : OrderService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
@@ -72,6 +74,10 @@ export class PendingOrderComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onCancel(){
+    this.editedOrder=null;
   }
 
 }

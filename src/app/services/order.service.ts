@@ -14,6 +14,8 @@ const EDIT_ORDER = "editOrder"
 const APPROVE = "approveOrder"
 const REJECT = "rejectOrder"
 const CANCEL = "cancelOrder"
+const ALL_APPROVED = "getAllApproved"
+const ALL_REJECTED = "getAllRejected"
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +70,14 @@ export class OrderService {
 
   onCancelOrder(data){
     return this.http.put(`${API_URL}${CANCEL}`,data);
+  }
+
+  getAllApproved(){
+    return this.http.get(`${API_URL}${ALL_APPROVED}`);
+  }
+
+  getAllRejected(){
+    return this.http.get(`${API_URL}${ALL_REJECTED}`);
   }
 
 }

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { PublicHomepageComponent } from './public-homepage/public-homepage.component';
-import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'publicHomepage', component: PublicHomepageComponent},
-  { path: 'userHomepage', component: UserHomepageComponent },
   { path: 'adminHomepage', component: AdminHomepageComponent},
   { path: '', redirectTo: 'publicHomepage', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent , children:[

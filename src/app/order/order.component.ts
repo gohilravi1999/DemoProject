@@ -3,6 +3,7 @@ import { AdminServiceService } from '../services/admin-service.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Order } from './order.model';
 import { OrderService } from '../services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -23,7 +24,8 @@ export class OrderComponent implements OnInit {
 
   constructor(private adminService : AdminServiceService,
               private tokenStorageService : TokenStorageService,
-              private orderService : OrderService) { }
+              private orderService : OrderService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.getListOfActiveProduct();
@@ -62,6 +64,7 @@ export class OrderComponent implements OnInit {
         data => {
           this.isFailed =false;
           console.log(data);
+          this.router.navigate(['getUserOrder']);
         },
         error => {
           this.isFailed= true;

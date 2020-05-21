@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -9,14 +10,16 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrderListComponent implements OnInit {
 
   orders : any;
+  rejectedOrder : any;
   pendingOrder : any;
   currentIndex = -1;
-
-  constructor(private  orderService : OrderService) { }
+  constructor(private  orderService : OrderService,
+                private router : Router) { }
 
   ngOnInit(): void {
     this.getAllPendingOrder();
-    this.getAllOrders();
+    this.getAllApprovedOrders();
+    this.getAllRejectedOrders
   }
 
   getAllPendingOrder(){
@@ -31,10 +34,22 @@ export class OrderListComponent implements OnInit {
     );
   }
 
-  getAllOrders(){
-    this.orderService.getOrders().subscribe(
+  getAllApprovedOrders(){
+    this.orderService.getAllApproved().subscribe(
       data => {
         this.orders = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllRejectedOrders(){
+    this.orderService.getAllRejected().subscribe(
+      data => {
+        this.rejectedOrder = data;
         console.log(data);
       },
       error => {

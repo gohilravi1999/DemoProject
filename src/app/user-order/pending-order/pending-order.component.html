@@ -1,5 +1,5 @@
 <div class="list row">
-    <h4 style="color: blue;">Pending order List :</h4>
+    <h4 style="color: blue;">Pending order List : Count : {{pendingOrder.length}}</h4>
 </div>
 <br>
   <div class="row">
@@ -154,5 +154,8 @@
 
         <button class="btn btn-success">
           Edit</button>
+
+          <button (click)="onCancel()" class="btn btn-danger">
+            Cancel</button>
       </form>
   </div>
