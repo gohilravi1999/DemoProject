@@ -25,6 +25,9 @@ export class AdminServiceService {
     return this.http.get(API_URL + 'getListOfInActiveUser');
   }
 
+  listOfAllUser() : Observable<any>{
+    return this.http.get(API_URL + 'getAllUser');
+  }
   makeInactive(data){
     return this.http.put(`${API_URL}${MAKE_INACTIVE}`,data);
   }

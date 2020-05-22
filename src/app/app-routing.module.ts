@@ -17,11 +17,13 @@ import { ApprovedOrderComponent } from './user-order/approved-order/approved-ord
 import { RejectedOrderComponent } from './user-order/rejected-order/rejected-order.component';
 import { CanceledOrderComponent } from './user-order/canceled-order/canceled-order.component';
 import { OrderListComponent } from './admin-homepage/order-list/order-list.component';
+import { ChartComponent } from './admin-homepage/chart/chart.component';
 
 
 const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'login', component: LoginFormComponent },
+  { path: 'chart', component: ChartComponent },
   { path: 'publicHomepage', component: PublicHomepageComponent},
   { path: 'adminHomepage', component: AdminHomepageComponent},
   { path: '', redirectTo: 'publicHomepage', pathMatch: 'full' },

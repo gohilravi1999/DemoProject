@@ -16,6 +16,7 @@ const REJECT = "rejectOrder"
 const CANCEL = "cancelOrder"
 const ALL_APPROVED = "getAllApproved"
 const ALL_REJECTED = "getAllRejected"
+const ORDER_COUNT = "getOrderOfUser"
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,10 @@ export class OrderService {
 
   getAllReject(){
     return this.http.get(`${API_URL}${ALL_REJECTED}`);
+  }
+
+  getOrderByUser(data){
+    return this.http.post(`${API_URL}${ORDER_COUNT}`,data);
   }
 
 }

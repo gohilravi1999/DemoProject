@@ -24,6 +24,8 @@ import { ApprovedOrderComponent } from './user-order/approved-order/approved-ord
 import { RejectedOrderComponent } from './user-order/rejected-order/rejected-order.component';
 import { CanceledOrderComponent } from './user-order/canceled-order/canceled-order.component';
 import { OrderListComponent } from './admin-homepage/order-list/order-list.component';
+import {ChartsModule} from 'ng2-charts';
+import { ChartComponent } from './admin-homepage/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,15 @@ import { OrderListComponent } from './admin-homepage/order-list/order-list.compo
     ApprovedOrderComponent,
     RejectedOrderComponent,
     CanceledOrderComponent,
-    OrderListComponent
+    OrderListComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

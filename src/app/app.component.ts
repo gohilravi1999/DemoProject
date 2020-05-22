@@ -37,6 +37,9 @@ export class AppComponent {
       }
       this.username = user.username;
     }
+    else{
+      this.router.navigate(['login']);
+    }
   }
 
   logout() {
