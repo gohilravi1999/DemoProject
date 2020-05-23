@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
 import { OrderService } from 'src/app/services/order.service';
+import { ChartDataSets } from 'chart.js';
 
 @Component({
   selector: 'app-chart',
@@ -21,8 +22,11 @@ export class ChartComponent implements OnInit {
   public barChartLabels ;
   public barChartType = 'bar';
   public barChartLegend = true;
+  barData :any =[];
   
-  public barChartData = [{data :[this.chartData], label :'Order'}];
+  public barChartData : ChartDataSets[] = [
+    { data: this.barData, label: 'Orders per user' },
+  ];
 
   constructor(private adminService : AdminServiceService,
     private orderService : OrderService) {
@@ -30,7 +34,6 @@ export class ChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAllUser();
-    //this.findNumberOfOrder();
   }
   
   findAllUser(){
@@ -39,11 +42,13 @@ export class ChartComponent implements OnInit {
         this.users = data;
         this.barChartLabels = data.map(a=>a.username);
         console.log(this.barChartLabels);
-        console.log(this.users);
         this.orderService.getOrderByUser(this.users).subscribe(
           data=>{
             console.log(data);
            this.chartData = data;
+           for(var index in this.chartData){
+            this.barData.push(this.chartData[index])  ;
+           }
            console.log(this.chartData);
           },
           error=>{
@@ -56,18 +61,4 @@ export class ChartComponent implements OnInit {
       }
     );
    }
-
-  //  findNumberOfOrder(){
-  //   this.orderService.getOrderByUser(this.users).subscribe(
-  //     data=>{
-  //       console.log(data);
-  //      this.chartData = data;
-  //     },
-  //     error=>{
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-
 }
