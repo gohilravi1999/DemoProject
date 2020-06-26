@@ -22,6 +22,7 @@ export class LoginFormComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.tokenStorage.isAdminOrUser();
     }
   }
 

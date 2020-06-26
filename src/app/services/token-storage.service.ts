@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -8,7 +9,13 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() { }
+  idAdminLoggedIn = false;
+  isUserLoggedIn = false;
+  hasAdminRole = false;
+  hasUserRole = false;
+  private roles : string[];
+
+  constructor(private router : Router) { }
 
   signOut() {
     window.sessionStorage.clear();
@@ -30,5 +37,38 @@ export class TokenStorageService {
 
   public getUser() {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
+  }
+
+  isAdminLogin(){
+
+    this.idAdminLoggedIn = !!this.getToken();
+    if(this.idAdminLoggedIn){
+      const user = this.getUser();
+      this.roles = user.roles;
+      return this.roles.includes('ROLE_ADMIN');
+    }
+  }
+
+  isUserLogin(){
+    this.isUserLoggedIn = !!this.getToken();
+    if(this.isUserLoggedIn){
+      const user = this.getUser();
+      this.roles = user.roles;
+      return this.roles.includes('ROLE_USER');
+    }
+  }
+
+  isAdminOrUser(){
+    const user = this.getUser();
+    this.roles = user.roles;
+    this.hasUserRole = this.roles.includes('ROLE_USER');
+    this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
+
+      if(this.hasAdminRole){
+        this.router.navigate(['getUser']);
+      }
+      if(this.hasUserRole){
+        this.router.navigate(['order']);
+      }
   }
 }

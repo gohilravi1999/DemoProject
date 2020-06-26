@@ -11,39 +11,17 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   
-  private roles: string[];
   isLoggedIn = false;
-  hasAdminRole = false;
-  hasUserRole = false;
-  username: string;
 
   constructor(private tokenStorageService: TokenStorageService,
-    private router : Router, private location:Location) { }
+    private router : Router) { }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-      this.hasUserRole = this.roles.includes('ROLE_USER');
-      this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
-
-      if(this.hasAdminRole){
-        this.router.navigate(['getUser']);
-      }
-      if(this.hasUserRole){
-        this.router.navigate(['order']);
-      }
-      this.username = user.username;
-    }
-    else{
+    if (!this.isLoggedIn) {
       this.router.navigate(['login']);
     }
   }
-
-  logout() {
-   this.tokenStorageService.signOut();
-   window.location.reload();
-  }
+  
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-public-homepage',
@@ -9,18 +10,20 @@ import { UserService } from '../services/user.service';
 export class PublicHomepageComponent implements OnInit {
 
   content: string;
+  isLoggedIn = false;
+  username : string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.username = this.tokenStorageService.getUser().username;
   }
+  
+  logout() {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+   }
 }
 
