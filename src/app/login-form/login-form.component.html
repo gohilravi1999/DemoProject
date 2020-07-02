@@ -1,0 +1,55 @@
+<div class="card bg-light text-dark"
+  style="width:600px;
+  margin-left:260px;">
+    <div class="card-body">
+        <h4 style="text-align: center;">Login Form</h4>
+        <hr>
+        <div class="alert alert-warning" *ngIf="isLoginFailed">
+          {{errorMessage}}<br />
+        </div>
+
+        <form name="form"
+        (ngSubmit)="loginForm.form.valid && onSubmit()"
+        #loginForm="ngForm"
+        novalidate>
+
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                placeholder="Enter your username"
+                [(ngModel)]="form.username"
+                required
+                #username="ngModel"
+              >
+                <span class="help-block" *ngIf="username.errors?.required && username.touched">
+                  Username is required</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" 
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  placeholder="Enter your password"
+                  required
+                  #password="ngModel">
+                  <span class="help-block" *ngIf="password.errors?.required && password.touched">
+                    Password is required</span>
+            </div>
+        
+            <button type="submit" 
+            style="margin-right: 16px;"
+              class="btn btn-primary">Submit</button>
+    
+            <button 
+              routerLink="/signup"
+              class="btn btn-success">Sign Up</button>
+        </form>
+
+    </div>
+  </div>

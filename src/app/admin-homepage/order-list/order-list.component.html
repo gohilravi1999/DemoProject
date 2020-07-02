@@ -1,0 +1,128 @@
+<div class="list row">
+    <h4 style="color: blue;"> Pending Order List : </h4>
+</div>
+<br>
+  <div class="row">
+    <div class="col-sm-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>userId</th>
+            <th>ProductName</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Mobile No.</th>
+            <th>No.of Item</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of pendingOrder; let i = index"
+          [class.active]="i == currentIndex">
+            <td>{{order.userId}}</td>
+            <td>{{order.name}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.pincode}}</td>
+            <td>{{order.mobileNumber}}</td>
+            <td>{{order.numberOfItem}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-0">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of pendingOrder; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="onApproveOrder(order)">
+                  <td><a (click)="onApproveOrder(order)"
+                    routerLink="/adminOrder"
+                    style="color: green;">Approve</a></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="col-sm-0">
+        <table class="table">
+          <thead>
+              <tr>
+                <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let order of pendingOrder; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="onRejectOrder(order)">
+                <td><a (click)="onRejectOrder(order)"
+                  routerLink="/adminOrder"
+                  style="color: red;">Reject</a></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+<div class="list row">
+    <h4 style="color: blue;">All Approved Order List : </h4>
+</div>
+<br>
+<div class="col-sm-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>userId</th>
+          <th>ProductName</th>
+          <th>Address</th>
+          <th>Pincode</th>
+          <th>Mobile No.</th>
+          <th>No.of Item</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i = index"
+        [class.active]="i == currentIndex"
+        >
+          <td>{{order.userId}}</td>
+          <td>{{order.name}}</td>
+          <td>{{order.address}}</td>
+          <td>{{order.pincode}}</td>
+          <td>{{order.mobileNumber}}</td>
+          <td>{{order.numberOfItem}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="list row">
+    <h4 style="color: blue;">All Rejected Order List :</h4>
+</div>
+<br>
+<div class="col-sm-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>userId</th>
+          <th>ProductName</th>
+          <th>Address</th>
+          <th>Pincode</th>
+          <th>Mobile No.</th>
+          <th>No.of Item</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of rejectedOrder; let i = index"
+        [class.active]="i == currentIndex"
+        >
+          <td>{{order.userId}}</td>
+          <td>{{order.name}}</td>
+          <td>{{order.address}}</td>
+          <td>{{order.pincode}}</td>
+          <td>{{order.mobileNumber}}</td>
+          <td>{{order.numberOfItem}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

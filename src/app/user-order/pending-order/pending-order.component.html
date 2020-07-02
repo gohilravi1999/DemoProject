@@ -1,0 +1,163 @@
+<div class="list row">
+    <h4 style="color: blue;">Pending order List : Count : {{pendingOrder.length}}</h4>
+</div>
+<br>
+  <div class="row">
+    <div class="col-sm-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ProductName</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Mobile No.</th>
+            <th>Item</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of pendingOrder; let i = index"
+          [class.active]="i == currentIndex">
+            <td>{{order.name}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.pincode}}</td>
+            <td>{{order.mobileNumber}}</td>
+            <td>{{order.numberOfItem}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-0">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of pendingOrder; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="onCancelOrder(order)">
+                  <td><a (click)="onCancelOrder(order)" 
+                      style="color: red;"
+                    routerLink="/getUserOrder/canceledOrder">Cancel</a></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="col-sm-0">
+        <table class="table">
+          <thead>
+              <tr>
+                <th>Edit</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let order of pendingOrder; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="onEditOrder(order)">
+                <td><a (click)="onEditOrder(order.id)"
+                    routerLink="/getUserOrder/pendingOrder">Edit</a></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+
+<div *ngIf = "editedOrder;" class="col-sm-8">
+  <div class="card bg-light text-dark"
+  style="margin-left: 20px;">
+
+  <div class="card-body">
+      <h4 style="text-align: center;">Edit {{editedOrder.name}}</h4>
+      <hr>
+      <form
+        name="form"
+        (ngSubmit)="editForm.form.valid && onEditActiveOrder()"
+        #editForm="ngForm"
+        novalidate
+      >  
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            [ngModel]="editedOrder?.address" (ngModelChange)="editedOrder.address = $event"
+            placeholder="Enter your address"
+            minlength="8"
+            required
+            #address="ngModel"
+          >
+          <span class="help-block" *ngIf="address.errors?.required && address.touched">
+            Address is required</span>
+          <span class="help-block" *ngIf="address.errors?.minlength && address.touched">
+            Minimum size must be 8</span>
+        </div>
+  
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pincode"
+            [ngModel]="editedOrder?.pincode" (ngModelChange)="editedOrder.pincode = $event"
+            pattern="^[0-9]{0,}$"
+            minlength="6"
+            maxlength="8"
+            placeholder="Enter your pincode"
+            required
+            #pincode="ngModel"
+          >
+          <span class="help-block" *ngIf="pincode.errors?.required && pincode.touched">
+            Pincode is required</span>
+          <span class="help-block" *ngIf="pincode.errors?.pattern && pincode.touched">
+            Pincode must have only number</span>
+            <span class="help-block" *ngIf="pincode.errors?.minlength && pincode.touched">
+              Pincode size must be more than 6.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mobile"
+            [ngModel]="editedOrder?.mobileNumber" (ngModelChange)="editedOrder.mobileNumber = $event"
+            pattern="^[0-9]{0,}$"
+            maxlength="10"
+            placeholder="Enter your mobile number"
+            required
+            #mobile="ngModel"
+          >
+          <span class="help-block" *ngIf="mobile.errors?.required && mobile.touched">
+            Mobile Number is required</span>
+          <span class="help-block" *ngIf="mobile.errors?.pattern && mobile.touched">
+            Mobile must have only number.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfItem">No. Of Item</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numberOfItem"
+            [ngModel]="editedOrder?.numberOfItem" (ngModelChange)="editedOrder.numberOfItem = $event"
+            pattern="^[0-9]{0,}$"
+            maxlength="4"
+            placeholder="Enter your number of item"
+            required
+            #noOfItem="ngModel"
+          >
+          <span class="help-block" *ngIf="noOfItem.errors?.required && noOfItem.touched">
+            No of Item field is required</span>
+          <span class="help-block" *ngIf="noOfItem.errors?.pattern && noOfItem.touched">
+            No of Item must have only number.</span>
+        </div>
+
+        <button class="btn btn-success">
+          Edit</button>
+
+          <button (click)="onCancel()" class="btn btn-danger">
+            Cancel</button>
+      </form>
+  </div>

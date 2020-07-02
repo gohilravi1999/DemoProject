@@ -1,0 +1,208 @@
+<div class="list row">
+  <div class="col-sm-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<br>
+<div *ngIf="editedProduct;" class="card bg-light text-dark"
+        style="width:600px;
+        margin-left: 250px;">
+        <div class="card-body">
+          <h4 style="text-align: center;">Edit Product</h4>
+          <hr>
+      
+          <div class="alert alert-warning" *ngIf="isFailed">
+            {{errorMessage}}<br />
+          </div>
+      
+          <form
+            name="form"
+            (ngSubmit)="editProductForm.form.valid && onEditProduct()"
+            #editProductForm="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [ngModel]="editedProduct?.name" (ngModelChange)="editedProduct.name = $event"
+                placeholder="Enter product name"
+                pattern="^[a-zA-Z0-9._%+-]{3,}$"
+                required
+                #name="ngModel"
+              >
+              <span class="help-block" *ngIf="name.errors?.required && name.touched">
+                Product name is required</span>
+              <span class="help-block" *ngIf="name.errors?.pattern && name.touched">
+               Minimum size must be 3</span>
+            </div>
+      
+            <div class="form-group">
+              <label for="imagePath">imagePath</label>
+              <input
+                type="imagePath"
+                class="form-control"
+                name="imagePath"
+                [ngModel]="editedProduct?.imagePath" (ngModelChange)="editedProduct.imagePath = $event"
+                placeholder="Enter imagePath"
+                required
+                #imagePath="ngModel"
+              >
+              <span class="help-block" *ngIf="imagePath.errors?.required && imagePath.touched">
+                imagePath is required</span>
+            </div>
+            <img [src]="imagePath.value" class="img-responsive"
+                style="width: 300px;height:300px;"
+                *ngIf="imagePath.touched">
+             <div class="form-group">
+                <label for="description">Description</label>
+                <input
+                  type="imagePath"
+                  class="form-control"
+                  name="description"
+                  [ngModel]="editedProduct?.description" (ngModelChange)="editedProduct.description = $event"
+                  placeholder="Enter description"
+                  maxlength="25"
+                  required
+                  #description="ngModel"
+                >
+                <span class="help-block" *ngIf="description.errors?.required && description.touched">
+                description is required</span>
+                <span class="help-block" *ngIf="description.errors?.maxlength && description.touched">
+                  description size must less than 25</span>
+              </div>
+            <button class="btn btn-success"
+            style="margin-right: 16px;">
+              Save</button>
+              <button (click)="onCancel()" class="btn btn-danger">
+                cancel</button>
+          </form>
+        </div>
+     </div>
+<br>
+<div class="list row">
+  <h4 style="color: blue;margin-right: 20px;">Product List :</h4>
+  <div class="list row">
+    <button class="btn btn-success btn-lg float-right" 
+    routerLink="addProduct">Add new product</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of activeProducts; let i = index"
+        [class.active]="i == currentIndex">
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td><img
+            [src]="product.imagePath"
+            alt="{{ product.name }}"
+            class="img-responsive"
+            style="max-height: 20px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-0">
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of activeProducts; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="makeInactiveProduct(product)">
+              <td><a routerLink="/getProduct" style="color:red;">Inactive</a></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <div class="col-sm-0">
+    <table class="table">
+      <thead>
+          <tr>
+            <th>Edit</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of activeProducts; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="onEditActive(product)">
+            <td><a (click)="onEditActive(product.id)"
+              routerLink="/getProduct">Edit</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="col-sm-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let product of InactiveProducts; let i = index"
+        [class.active]="i == currentIndex">
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td><img
+            [src]="product.imagePath"
+            alt="{{ product.name }}"
+            class="img-responsive"
+            style="max-height: 20px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-0">
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let product of InactiveProducts; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="makeActiveProduct(product)">
+              <td><a routerLink="/getProduct" style="color:green;">Active</a></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <div class="col-sm-0">
+  <table class="table">
+      <thead>
+          <tr>
+            <th>Edit</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let product of InactiveProducts; let i = index"
+          [class.active]="i == currentIndex">
+            <td><a (click)="onEditActive(product.id)"
+              routerLink="/getProduct">Edit</a></td>
+          </tr>
+      </tbody>
+  </table>
+  </div>
+</div>
+
+
+    

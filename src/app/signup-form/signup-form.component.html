@@ -1,0 +1,80 @@
+<div class="card bg-light text-dark"
+  style="width:600px;
+  margin-left:260px;">
+  <div class="card-body">
+    <h4 style="text-align: center;">Registration Form</h4>
+    <hr>
+
+    <div class="alert alert-warning" *ngIf="isSignUpFailed">
+      {{errorMessage}}<br />
+    </div>
+
+    <form
+      name="form"
+      (ngSubmit)="signupForm.form.valid && onSubmit()"
+      #signupForm="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          placeholder="Enter your username"
+          pattern="^[a-zA-Z0-9._%+-]{3,}$"
+          required
+          #username="ngModel"
+        >
+        <span class="help-block" *ngIf="username.errors?.required && username.touched">
+          Username is required</span>
+        <span class="help-block" *ngIf="username.errors?.pattern && username.touched">
+         Minimum size must be 3</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          placeholder="Enter your email address"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+          #email="ngModel"
+        >
+        <span class="help-block" *ngIf="email.errors?.required && email.touched">
+          Email is required</span>
+        <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+          Email is not valid</span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          placeholder="Enter your password"
+          pattern="^.*(?=.{6,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+          required
+          #password="ngModel"
+        >
+        <span class="help-block" *ngIf="password.errors?.required && password.touched">
+          Password is required</span>
+        <span class="help-block" *ngIf="password.errors?.pattern && password.touched">
+          Password should have at least 6 character with lowercase and Uppercase alphabet,digit and special character Ex. Abc@123</span>
+      </div>
+
+      <button class="btn btn-primary"
+      style="margin-right: 16px;">
+        Submit</button>
+        <button class="btn btn-success" routerLink="/login">
+          Login</button>
+    </form>
+
+  </div>
+</div>

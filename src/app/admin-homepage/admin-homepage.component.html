@@ -1,0 +1,6 @@
+<div class="row" *ngIf="currentUser; else loggedOut">
+    
+</div>
+<ng-template #loggedOut>
+    Please login.
+</ng-template>

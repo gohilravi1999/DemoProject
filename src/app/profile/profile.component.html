@@ -1,0 +1,20 @@
+<br>
+<div class="row" *ngIf="currentUser; else loggedOut">
+    <div class="col-sm-4">
+      <div class="card" style="width:300px">
+          <h4 class="card-header">Username : {{ currentUser.username }}</h4>
+          <p class="card-body">Email : {{ currentUser.email }}</p>
+      </div>
+      <br>
+    <button class="btn btn-primary" 
+    style="margin-right: 16px;"
+          (click)="onChangePassword()">Change Password</button>
+    <button class="btn btn-primary" (click)="onEdit()">Edit Profile</button>
+    </div>
+    <div class="col-sm-8">
+      <router-outlet></router-outlet>
+    </div>
+</div> 
+<ng-template #loggedOut>
+    Please login.
+</ng-template>
