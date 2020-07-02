@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { NormalUserServicesService } from '../services/normal-user-services.service';
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +11,6 @@ import { NormalUserServicesService } from '../services/normal-user-services.serv
 export class ProfileComponent implements OnInit {
 
   currentUser : any ;
-<<<<<<< HEAD
   user : any ;
 
   constructor(private tokenStorageService : TokenStorageService,
@@ -28,15 +24,6 @@ export class ProfileComponent implements OnInit {
                 response => {
                   this.currentUser = response
             });
-=======
-
-  constructor(private tokenStorageService : TokenStorageService,
-                private router : Router ,
-                private route : ActivatedRoute){ }
-
-  ngOnInit(): void {
-    this.currentUser = this.tokenStorageService.getUser();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
   }
 
   onEdit(){

@@ -37,13 +37,9 @@
                 <tr *ngFor="let order of pendingOrder; let i = index"
                 [class.active]="i == currentIndex"
                 (click)="onCancelOrder(order)">
-<<<<<<< HEAD
                   <td><a (click)="onCancelOrder(order)" 
                       style="color: red;"
                     routerLink="/getUserOrder/canceledOrder">Cancel</a></td>
-=======
-                  <td><a (click)="onCancelOrder(order)" style="color: blue;">Cancel</a></td>
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                 </tr>
             </tbody>
         </table>
@@ -60,11 +56,7 @@
               [class.active]="i == currentIndex"
               (click)="onEditOrder(order)">
                 <td><a (click)="onEditOrder(order.id)"
-<<<<<<< HEAD
                     routerLink="/getUserOrder/pendingOrder">Edit</a></td>
-=======
-                    style="color: blue;">Edit</a></td>
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
               </tr>
           </tbody>
         </table>

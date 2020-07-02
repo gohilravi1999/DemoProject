@@ -62,14 +62,10 @@ export class OrderListComponent implements OnInit {
     this.orderService.onApprove(order).subscribe(
       data => {
         console.log(data);
-<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/',{skipLocationChange:true}).then(() =>{
           this.router.navigate([currentUrl]);
         });
-=======
-        window.location.reload();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error => {
         console.log(error);
@@ -81,14 +77,10 @@ export class OrderListComponent implements OnInit {
     this.orderService.onReject(order).subscribe(
       data => {
         console.log(data);
-<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/',{skipLocationChange:true}).then(() =>{
           this.router.navigate([currentUrl]);
         });
-=======
-        window.location.reload();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error => {
         console.log(error);

@@ -13,10 +13,7 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
 
   activeProducts: any;
-<<<<<<< HEAD
   isActivedForm=true;
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
   currentIndex = -1;
   form : any = {};
   orderedProduct : any;
@@ -35,10 +32,7 @@ export class OrderComponent implements OnInit {
     this.getListOfActiveProduct();
     this.currentUser = this.tokenStorageService.getUser();
     this.id = this.currentUser.id;
-<<<<<<< HEAD
     
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
   }
   
   getListOfActiveProduct(){
@@ -57,11 +51,8 @@ export class OrderComponent implements OnInit {
     this.adminService.getProduct(id).subscribe(
       data => {
         this.orderedProduct = data;
-<<<<<<< HEAD
         this.form.name = this.orderedProduct.name;
         this.isActivedForm=true;
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         console.log(data);
       },
       error => {
@@ -77,11 +68,7 @@ export class OrderComponent implements OnInit {
         data => {
           this.isFailed =false;
           console.log(data);
-<<<<<<< HEAD
           this.router.navigate(['/getUserOrder/pendingOrder']);
-=======
-          this.router.navigate(['getUserOrder']);
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         },
         error => {
           this.isFailed= true;
@@ -94,12 +81,9 @@ export class OrderComponent implements OnInit {
       window.alert(this.errorMessage);
     }    
 }
-<<<<<<< HEAD
 
 onCancel(){
   this.isActivedForm=false;
   this.router.navigate(['/order']);
 }
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 }

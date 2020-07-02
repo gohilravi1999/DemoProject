@@ -11,7 +11,6 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   
-<<<<<<< HEAD
   isLoggedIn =false;
 constructor(private tokenStorageService : TokenStorageService,private router : Router){
 
@@ -24,19 +23,3 @@ constructor(private tokenStorageService : TokenStorageService,private router : R
   }
 }
   
-=======
-  isLoggedIn = false;
-
-  constructor(private tokenStorageService: TokenStorageService,
-    private router : Router) { }
-
-  ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (!this.isLoggedIn) {
-      this.router.navigate(['login']);
-    }
-  }
-  
-}
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0

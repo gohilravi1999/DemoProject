@@ -24,15 +24,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'chart', component: ChartComponent },
-<<<<<<< HEAD
   { path: 'home', component: PublicHomepageComponent},
   { path: 'adminHomepage', component: AdminHomepageComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-=======
-  { path: 'publicHomepage', component: PublicHomepageComponent},
-  { path: 'adminHomepage', component: AdminHomepageComponent},
-  { path: '', redirectTo: 'publicHomepage', pathMatch: 'full' },
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
   { path: 'profile', component: ProfileComponent , children:[
     { path: 'editProfile', component: EditProfileComponent },
     { path: 'changePassword', component: ChangePasswordComponent }] 

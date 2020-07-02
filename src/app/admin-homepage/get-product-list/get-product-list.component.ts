@@ -58,13 +58,10 @@ export class GetProductListComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(response);
-<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error=>{
         console.log(error);
@@ -77,13 +74,10 @@ export class GetProductListComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(response);
-<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error=>{
         console.log(error);
@@ -110,14 +104,10 @@ export class GetProductListComponent implements OnInit {
     .subscribe(
       response=>{
         window.alert("Product successfully Edited!!")
-<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
-=======
-        window.location.reload();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       err=>{
         this.isFailed=true;

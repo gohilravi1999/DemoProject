@@ -30,15 +30,10 @@ export class AddProductComponent implements OnInit {
         console.log(response);
         this.isSuccessful=true;
         this.isFailed=false;
-<<<<<<< HEAD
         window.alert("Product added Successfully");
         this.router.navigateByUrl('/' , {skipLocationChange:true}).then(() =>{
           this.router.navigate(['/getProduct']);
         });
-=======
-        window.alert("Product added Successfully!!");
-        window.location.reload();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error => {
         console.log(error);

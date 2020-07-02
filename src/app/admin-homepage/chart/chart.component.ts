@@ -42,10 +42,6 @@ export class ChartComponent implements OnInit {
         this.users = data;
         this.barChartLabels = data.map(a=>a.username);
         console.log(this.barChartLabels);
-<<<<<<< HEAD
-=======
-
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         this.orderService.getOrderByUser(this.users).subscribe(
           data=>{
             console.log(data);

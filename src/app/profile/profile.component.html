@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <br>
 <div class="row" *ngIf="currentUser; else loggedOut">
     <div class="col-sm-4">
@@ -10,24 +9,6 @@
     <button class="btn btn-primary" 
     style="margin-right: 16px;"
           (click)="onChangePassword()">Change Password</button>
-=======
-<div class="row" *ngIf="currentUser; else loggedOut">
-    <div class="col-sm-4">
-      <h5>
-        Username : {{ currentUser.username }}
-      </h5>
-   
-      <h5>
-       Email : {{ currentUser.email }}
-      </h5>
-    <h5>Roles:</h5>
-    <ul>
-      <li *ngFor="let role of currentUser.roles">
-        {{ role }}
-      </li>
-    </ul>
-    <button class="btn btn-primary" (click)="onChangePassword()">Change Password</button><br><br>
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
     <button class="btn btn-primary" (click)="onEdit()">Edit Profile</button>
     </div>
     <div class="col-sm-8">

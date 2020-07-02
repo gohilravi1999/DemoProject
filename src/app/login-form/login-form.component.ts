@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication-service.service';
 import { TokenStorageService } from '../services/token-storage.service';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
-=======
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 
 @Component({
   selector: 'app-login-form',
@@ -18,17 +15,11 @@ export class LoginFormComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-<<<<<<< HEAD
   hasAdminRole = false;
   hasUserRole = false;
 
   constructor(private authenticationService: AuthenticationService,
      private tokenStorage: TokenStorageService,private router : Router) { }
-=======
-
-  constructor(private authenticationService: AuthenticationService,
-     private tokenStorage: TokenStorageService) { }
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -46,13 +37,7 @@ export class LoginFormComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-<<<<<<< HEAD
         this.reloadPage();
-=======
-        this.roles = this.tokenStorage.getUser().roles;
-        
-       this.reloadPage();
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       err => {
         this.isLoginFailed = true;
@@ -65,8 +50,4 @@ export class LoginFormComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
