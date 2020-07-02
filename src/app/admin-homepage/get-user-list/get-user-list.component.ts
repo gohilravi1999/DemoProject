@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
 import { error } from '@angular/compiler/src/util';
+<<<<<<< HEAD
 import { Router, NavigationEnd } from '@angular/router';
+=======
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 
 @Component({
   selector: 'app-get-user-list',
@@ -19,9 +22,13 @@ export class GetUserListComponent implements OnInit {
   currentIndex = -1;
   isActive = false;
 
+<<<<<<< HEAD
   constructor(private adminService : AdminServiceService,private router:Router) { 
    
   }
+=======
+  constructor(private adminService : AdminServiceService) { }
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 
   ngOnInit(): void {
     this.getListOfActiveUser();
@@ -58,10 +65,13 @@ export class GetUserListComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(response);
+<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
+=======
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error=>{
         console.log(error);
@@ -74,10 +84,13 @@ export class GetUserListComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(response);
+<<<<<<< HEAD
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
+=======
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error=>{
         console.log(error);

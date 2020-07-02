@@ -5,6 +5,7 @@
         <div class="card-body">
           <h4 style="text-align: center;">Edit Profile</h4>
           <hr>
+<<<<<<< HEAD
           <form
             name="form"
             *ngIf="isActivedForm"
@@ -12,6 +13,41 @@
             #editProfileForm="ngForm"
             novalidate
           >      
+=======
+      
+          <div class="alert alert-success" *ngIf="isSuccessful">
+           Edited Successfully!
+          </div>
+      
+          <div class="alert alert-warning" *ngIf="isFailed">
+            Input is already in use!!<br />
+          </div>
+      
+          <form
+            name="form"
+            (ngSubmit)="editProfileForm.form.valid && onEditProfile()"
+            #editProfileForm="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="form.username"
+                placeholder="Enter your username"
+                pattern="^[a-zA-Z0-9._%+-]{3,}$"
+                required
+                #username="ngModel"
+              >
+              <span class="help-block" *ngIf="username.errors?.required && username.touched">
+                Username is required</span>
+              <span class="help-block" *ngIf="username.errors?.pattern && username.touched">
+               Minimum size must be 3</span>
+            </div>
+      
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
             <div class="form-group">
               <label for="email">Email</label>
               <input
@@ -30,6 +66,7 @@
                 Email is not valid</span>
             </div>
 
+<<<<<<< HEAD
             <button class="btn btn-success"
             style="margin-right: 16px;">
               Save</button>
@@ -37,6 +74,12 @@
                     (click)="onCancel()">
                 Cancel</button>
           </form>  
+=======
+            <button class="btn btn-success">
+              Save</button>
+          </form>
+      
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         </div>
       </div>
     </div>

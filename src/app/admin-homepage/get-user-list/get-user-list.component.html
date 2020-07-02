@@ -33,7 +33,11 @@
                 <tr *ngFor="let user of activeUsers; let i = index"
                 [class.active]="i == currentIndex"
                 (click)="makeInactive(user)">
+<<<<<<< HEAD
                   <td><a routerLink="getUser"  style="color:red;">Inactive</a></td>
+=======
+                  <td><a href="/getUser">Inactive</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                 </tr>
             </tbody>
         </table>
@@ -74,7 +78,11 @@
                 <tr *ngFor="let user of inactiveUsers; let i = index"
                 [class.active]="i == currentIndex"
                 (click)="makeActive(user)">
+<<<<<<< HEAD
                   <td><a routerLink="getUser" style="color:green;">Active</a></td>
+=======
+                  <td><a href="/getUser">Active</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                 </tr>
             </tbody>
         </table>

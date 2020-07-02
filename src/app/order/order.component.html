@@ -30,7 +30,11 @@
       <table class="table">
           <thead>
               <tr>
+<<<<<<< HEAD
                 <th>Action</th>
+=======
+                <th>Order</th>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
               </tr>
           </thead>
           <tbody>
@@ -38,12 +42,20 @@
               [class.active]="i == currentIndex"
               (click)="setActiveProduct(product)">
                 <td><a (click)="setActiveProduct(product.id)"
+<<<<<<< HEAD
                     routerLink="/order">Order now</a></td>
+=======
+                    style="color: blue;">Order now</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
               </tr>
           </tbody>
       </table>
     </div>
+<<<<<<< HEAD
     <div *ngIf = "orderedProduct && isActivedForm;" class="col-sm-6">
+=======
+    <div *ngIf = "orderedProduct;" class="col-sm-6">
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         <div class="card bg-light text-dark"
         style="margin-left: 20px;">
 
@@ -66,7 +78,11 @@
                   class="form-control"
                   name="product"
                   [(ngModel)]="form.name"
+<<<<<<< HEAD
                   placeholder="Enter Product name"
+=======
+                  placeholder="Enter Product name for verification"
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                   minlength="3"
                   required
                   #productName="ngModel"
@@ -155,12 +171,17 @@
                   No of Item must have only number.</span>
               </div>
 
+<<<<<<< HEAD
               <button class="btn btn-success"
                 style="margin-right: 16px;">
                 Order Now</button>
               <button class="btn btn-danger"
                   (click)="onCancel()">
                   Cancel</button>
+=======
+              <button class="btn btn-success">
+                Order Now</button>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
             </form>
           </div>
         

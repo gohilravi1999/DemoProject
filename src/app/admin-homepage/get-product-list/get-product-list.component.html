@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<br>
+<div class="list row">
+  <button class="btn btn-success" routerLink="addProduct">Add new product</button>
+</div>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 <div class="list row">
   <div class="col-sm-8">
     <router-outlet></router-outlet>
@@ -73,8 +80,12 @@
                 <span class="help-block" *ngIf="description.errors?.maxlength && description.touched">
                   description size must less than 25</span>
               </div>
+<<<<<<< HEAD
             <button class="btn btn-success"
             style="margin-right: 16px;">
+=======
+            <button class="btn btn-success">
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
               Save</button>
               <button (click)="onCancel()" class="btn btn-danger">
                 cancel</button>
@@ -83,6 +94,7 @@
      </div>
 <br>
 <div class="list row">
+<<<<<<< HEAD
   <h4 style="color: blue;margin-right: 20px;">Product List :</h4>
   <div class="list row">
     <button class="btn btn-success btn-lg float-right" 
@@ -90,6 +102,10 @@
   </div>
 </div>
 <br>
+=======
+  <h4 style="color: blue;">Product List :</h4>
+</div>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 <div class="row">
   <div class="col-sm-4">
     <table class="table">
@@ -125,7 +141,11 @@
             <tr *ngFor="let product of activeProducts; let i = index"
             [class.active]="i == currentIndex"
             (click)="makeInactiveProduct(product)">
+<<<<<<< HEAD
               <td><a routerLink="/getProduct" style="color:red;">Inactive</a></td>
+=======
+              <td><a href="/getProduct">Inactive</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
             </tr>
         </tbody>
     </table>
@@ -141,8 +161,12 @@
           <tr *ngFor="let product of activeProducts; let i = index"
           [class.active]="i == currentIndex"
           (click)="onEditActive(product)">
+<<<<<<< HEAD
             <td><a (click)="onEditActive(product.id)"
               routerLink="/getProduct">Edit</a></td>
+=======
+            <td><a (click)="onEditActive(product.id)">Edit</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
           </tr>
       </tbody>
     </table>
@@ -181,7 +205,11 @@
             <tr  *ngFor="let product of InactiveProducts; let i = index"
             [class.active]="i == currentIndex"
             (click)="makeActiveProduct(product)">
+<<<<<<< HEAD
               <td><a routerLink="/getProduct" style="color:green;">Active</a></td>
+=======
+              <td><a href="/getProduct">Active</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
             </tr>
         </tbody>
     </table>
@@ -196,8 +224,12 @@
       <tbody>
           <tr  *ngFor="let product of InactiveProducts; let i = index"
           [class.active]="i == currentIndex">
+<<<<<<< HEAD
             <td><a (click)="onEditActive(product.id)"
               routerLink="/getProduct">Edit</a></td>
+=======
+            <td><a (click)="onEditActive(product.id)">Edit</a></td>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
           </tr>
       </tbody>
   </table>

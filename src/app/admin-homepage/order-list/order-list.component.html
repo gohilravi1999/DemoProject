@@ -1,5 +1,9 @@
 <div class="list row">
+<<<<<<< HEAD
     <h4 style="color: blue;"> Pending Order List : </h4>
+=======
+    <h4 style="color: blue;"> Pending Order List with count : Count :{{pendingOrder.length}}</h4>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
 </div>
 <br>
   <div class="row">
@@ -40,7 +44,10 @@
                 [class.active]="i == currentIndex"
                 (click)="onApproveOrder(order)">
                   <td><a (click)="onApproveOrder(order)"
+<<<<<<< HEAD
                     routerLink="/adminOrder"
+=======
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                     style="color: green;">Approve</a></td>
                 </tr>
             </tbody>
@@ -58,7 +65,10 @@
               [class.active]="i == currentIndex"
               (click)="onRejectOrder(order)">
                 <td><a (click)="onRejectOrder(order)"
+<<<<<<< HEAD
                   routerLink="/adminOrder"
+=======
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                   style="color: red;">Reject</a></td>
               </tr>
           </tbody>

@@ -56,9 +56,13 @@ export class PendingOrderComponent implements OnInit {
       data => {
         console.log(data);
         window.alert("Edited successfully!!");
+<<<<<<< HEAD
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate(['/getUserOrder/pendingOrder']);
       });
+=======
+        window.location.reload();
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error => {
         console.log(error);
@@ -70,9 +74,13 @@ export class PendingOrderComponent implements OnInit {
     this.orderService.onCancelOrder(order).subscribe(
       data => {
         console.log(data);
+<<<<<<< HEAD
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate(['/getUserOrder/canceledOrder']);
       });
+=======
+        window.location.reload();
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
       },
       error => {
         console.log(error);

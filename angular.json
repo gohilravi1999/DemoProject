@@ -120,6 +120,7 @@
           }
         }
       }
+<<<<<<< HEAD
     }
   },
   "defaultProject": "DemoProjectFrontEnd",
@@ -127,3 +128,8 @@
     "analytics": "c6d4c457-25eb-46c8-a621-e73017f417f9"
   }
 }
+=======
+    }},
+  "defaultProject": "DemoProjectFrontEnd"
+}
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0

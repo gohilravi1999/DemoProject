@@ -4,6 +4,13 @@
     <div class="card-body">
         <h4 style="text-align: center;">Login Form</h4>
         <hr>
+<<<<<<< HEAD
+=======
+
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+          Login successfull.
+        </div>
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
         <div class="alert alert-warning" *ngIf="isLoginFailed">
           {{errorMessage}}<br />
         </div>
@@ -36,14 +43,26 @@
                   name="password"
                   [(ngModel)]="form.password"
                   placeholder="Enter your password"
+<<<<<<< HEAD
+=======
+                  pattern="^.*(?=.{6,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
                   required
                   #password="ngModel">
                   <span class="help-block" *ngIf="password.errors?.required && password.touched">
                     Password is required</span>
+<<<<<<< HEAD
             </div>
         
             <button type="submit" 
             style="margin-right: 16px;"
+=======
+                  <span class="help-block" *ngIf="password.errors?.pattern && password.touched">
+                    Password should have at least 6 character with lowercase and Uppercase alphabet,digit and special character Ex. Abc@123</span>
+            </div>
+        
+            <button type="submit" 
+>>>>>>> 2b42c4591d67d19dfd1e03d6fc5e00cc455118f0
               class="btn btn-primary">Submit</button>
     
             <button 
