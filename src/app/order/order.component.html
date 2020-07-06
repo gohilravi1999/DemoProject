@@ -18,7 +18,7 @@
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
             <td><img
-              [src]="product.imagePath"
+              src="data:{{product.fileType}};base64,{{ product.fileByte }}"
               alt="{{ product.name }}"
               class="img-responsive"
               style="max-height: 20px;"></td>

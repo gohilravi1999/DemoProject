@@ -35,22 +35,13 @@
             </div>
       
             <div class="form-group">
-              <label for="imagePath">imagePath</label>
-              <input
-                type="imagePath"
-                class="form-control"
-                name="imagePath"
-                [(ngModel)]="form.imagePath"
-                placeholder="Enter imagePath"
-                required
-                #imagePath="ngModel"
-              >
-              <span class="help-block" *ngIf="imagePath.errors?.required && imagePath.touched">
-                imagePath is required</span>
+              <label for="imagePath">image</label>
+              <br>
+              <input type="file" 
+              class="form-control"
+              accept="image/*" (change)="onFileSelect($event)">
             </div>
-            <img [src]="imagePath.value" class="img-responsive"
-                style="width: 300px;height:300px;"
-                *ngIf="imagePath.touched">
+
              <div class="form-group">
                 <label for="description">Description</label>
                 <input

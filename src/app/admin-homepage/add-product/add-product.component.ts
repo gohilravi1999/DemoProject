@@ -15,6 +15,7 @@ export class AddProductComponent implements OnInit {
   errorMessage = '';
   isActiveForm = true;
   currentUser : any;
+  SelectedImage : File;
 
   constructor(private adminService : AdminServiceService,
               private tokenStorageService : TokenStorageService,
@@ -24,8 +25,15 @@ export class AddProductComponent implements OnInit {
     this.currentUser = this.tokenStorageService.getUser();
   }
 
+  onFileSelect(event){
+    this.SelectedImage = event.target.files[0];
+  }
+
   onSubmit(){
-    this.adminService.addNewProduct(this.form).subscribe(
+    const uploadFormData = new FormData();
+    uploadFormData.append('image', this.SelectedImage);
+    uploadFormData.append('product', JSON.stringify(this.form));
+    this.adminService.addNewProduct(uploadFormData).subscribe(
       response => {
         console.log(response);
         this.isSuccessful=true;

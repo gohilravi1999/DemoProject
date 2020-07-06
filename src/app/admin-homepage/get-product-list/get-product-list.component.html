@@ -41,21 +41,13 @@
       
             <div class="form-group">
               <label for="imagePath">imagePath</label>
-              <input
-                type="imagePath"
-                class="form-control"
-                name="imagePath"
-                [ngModel]="editedProduct?.imagePath" (ngModelChange)="editedProduct.imagePath = $event"
-                placeholder="Enter imagePath"
-                required
-                #imagePath="ngModel"
-              >
-              <span class="help-block" *ngIf="imagePath.errors?.required && imagePath.touched">
-                imagePath is required</span>
+              <br>
+              <input type="file" 
+              name="imagePath"
+              class="form-control"
+              accept="image/*" (change)="onFileSelect($event)">
             </div>
-            <img [src]="imagePath.value" class="img-responsive"
-                style="width: 300px;height:300px;"
-                *ngIf="imagePath.touched">
+
              <div class="form-group">
                 <label for="description">Description</label>
                 <input
@@ -106,7 +98,7 @@
           <td>{{product.name}}</td>
           <td>{{product.description}}</td>
           <td><img
-            [src]="product.imagePath"
+            src="data:{{product.fileType}};base64,{{ product.fileByte }}"
             alt="{{ product.name }}"
             class="img-responsive"
             style="max-height: 20px;"></td>
@@ -162,7 +154,7 @@
           <td>{{product.name}}</td>
           <td>{{product.description}}</td>
           <td><img
-            [src]="product.imagePath"
+            src="data:{{product.fileType}};base64,{{ product.fileByte }}"
             alt="{{ product.name }}"
             class="img-responsive"
             style="max-height: 20px;"></td>

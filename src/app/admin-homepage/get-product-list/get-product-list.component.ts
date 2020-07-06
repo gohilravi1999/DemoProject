@@ -19,6 +19,7 @@ export class GetProductListComponent implements OnInit {
   currentIndex = -1;
   errorMessage='';
   editedProduct:any;
+  SelectedImage :File;
 
   constructor(private adminService : AdminServiceService,
               private router : Router) { }
@@ -26,6 +27,10 @@ export class GetProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getListOfActiveProduct();
     this.getListOfInActiveProduct();
+  }
+
+  onFileSelect(event){
+    this.SelectedImage = event.target.files[0];
   }
 
   getListOfActiveProduct(){
@@ -100,7 +105,10 @@ export class GetProductListComponent implements OnInit {
 
   onEditProduct(){
     console.log(this.form);
-     this.adminService.editProduct(this.editedProduct.id,this.editedProduct)
+    const uploadFormData = new FormData();
+    uploadFormData.append('image', this.SelectedImage);
+    uploadFormData.append('product', JSON.stringify(this.editedProduct));
+     this.adminService.editProduct(this.editedProduct.id,uploadFormData)
     .subscribe(
       response=>{
         window.alert("Product successfully Edited!!")
