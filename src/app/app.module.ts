@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { PublicHomepageComponent } from './public-homepage/public-homepage.component';
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
@@ -53,6 +53,7 @@ import { ChartComponent } from './admin-homepage/chart/chart.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     ChartsModule
   ],
